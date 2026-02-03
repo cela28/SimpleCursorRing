@@ -50,18 +50,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| RING-01 | - | Pending |
-| RING-02 | - | Pending |
-| RING-03 | - | Pending |
-| RING-04 | - | Pending |
-| SETT-01 | - | Pending |
-| SETT-02 | - | Pending |
+| RING-01 | Phase 1 | Pending |
+| RING-02 | Phase 1 | Pending |
+| RING-03 | Phase 1 | Pending |
+| RING-04 | Phase 1 | Pending |
+| SETT-01 | Phase 2 | Pending |
+| SETT-02 | Phase 2 | Pending |
 
 **Coverage:**
 - v1 requirements: 6 total
-- Mapped to phases: 0
-- Unmapped: 6 ⚠️
+- Mapped to phases: 6
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-03*
-*Last updated: 2026-02-03 after initial definition*
+*Last updated: 2026-02-03 after roadmap creation*
