@@ -20,16 +20,16 @@ A visible, customizable ring follows the cursor — helping players track their 
 - [ ] Ring size is adjustable via slider (20-200px)
 - [ ] Ring color is customizable via color picker
 - [ ] Option to use player's class color for ring
-- [ ] Option to show/hide center dot
-- [ ] Option to show ring only in combat
-- [ ] Option to show ring only while right-clicking
-- [ ] Combat override: separate size/color when in combat
-- [ ] Combat overlay: optional second ring during combat with own size/color
-- [ ] Settings accessible via /simplecursorring or Interface Options
-- [ ] GUI matches EnhanceQoL's settings panel structure
+- [ ] Settings accessible via /simplecursorring slash command
+- [ ] Settings accessible via Interface Options addon panel
 
 ### Out of Scope
 
+- Center dot — user explicitly excluded, not wanted in any version
+- Combat-only mode — deferred to v2
+- Right-click-only mode — deferred to v2
+- Combat override (separate size/color) — deferred to v2
+- Combat overlay (second ring) — deferred to v2
 - Mouse trail feature — user requested ring only
 - Any other EnhanceQoL features — this is a single-purpose addon
 - Multi-language localization for v1 — English only initially
@@ -38,7 +38,7 @@ A visible, customizable ring follows the cursor — helping players track their 
 
 - Source: EnhanceQoL addon by R41z0r (https://github.com/R41z0r/EnhanceQoL)
 - Specifically extracting: `EnhanceQoL/Modules/Mouse/` module (ring portion only)
-- Assets needed: `Mouse.tga`, `Dot.tga` from `Assets/Mouse/`
+- Assets needed: `Mouse.tga` from `Assets/Mouse/`
 - Original uses EnhanceQoL's settings framework — we'll need a standalone settings UI
 - WoW addon structure: `.toc` file, Lua code, XML templates, texture assets
 
@@ -54,8 +54,10 @@ A visible, customizable ring follows the cursor — helping players track their 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Ring only, no trail | User preference — keep it simple | — Pending |
+| No center dot | User explicitly excluded, not wanted in any version | — Pending |
 | Named "SimpleCursorRing" | Matches project folder, descriptive | — Pending |
 | English only for v1 | Reduce scope, can add locales later | — Pending |
+| v1 = basic ring + settings | Combat features deferred to v2 | — Pending |
 
 ---
-*Last updated: 2026-02-03 after initialization*
+*Last updated: 2026-02-03 after requirements scoping*
