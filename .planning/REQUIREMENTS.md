@@ -9,10 +9,10 @@ Requirements for initial release.
 
 ### Core Ring
 
-- [ ] **RING-01**: Ring displays around cursor and follows mouse movement
-- [ ] **RING-02**: Ring size adjustable via slider (20-200px)
-- [ ] **RING-03**: Ring color customizable via color picker
-- [ ] **RING-04**: Option to use player's class color for ring
+- [x] **RING-01**: Ring displays around cursor and follows mouse movement
+- [x] **RING-02**: Ring size adjustable via slider (20-200px)
+- [x] **RING-03**: Ring color customizable via color picker
+- [x] **RING-04**: Option to use player's class color for ring
 
 ### Settings
 
@@ -50,10 +50,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| RING-01 | Phase 1 | Pending |
-| RING-02 | Phase 1 | Pending |
-| RING-03 | Phase 1 | Pending |
-| RING-04 | Phase 1 | Pending |
+| RING-01 | Phase 1 | Complete |
+| RING-02 | Phase 1 | Complete |
+| RING-03 | Phase 1 | Complete |
+| RING-04 | Phase 1 | Complete |
 | SETT-01 | Phase 2 | Pending |
 | SETT-02 | Phase 2 | Pending |
 
@@ -64,4 +64,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-03*
-*Last updated: 2026-02-03 after roadmap creation*
+*Last updated: 2026-02-03 after Phase 1 complete*

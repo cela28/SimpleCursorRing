@@ -17,8 +17,8 @@ A standalone WoW addon that displays a customizable ring around the mouse cursor
 **Plans:** 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Addon foundation + ring display (RING-01)
-- [ ] 01-02-PLAN.md — Settings infrastructure + customization (RING-02, RING-03, RING-04)
+- [x] 01-01-PLAN.md — Addon foundation + ring display (RING-01)
+- [x] 01-02-PLAN.md — Settings infrastructure + customization (RING-02, RING-03, RING-04)
 
 **Success Criteria:**
 1. Ring texture displays centered on cursor and moves smoothly with mouse
@@ -48,7 +48,7 @@ Plans:
 
 | Phase | Status | Requirements |
 |-------|--------|--------------|
-| 1 - Core Ring | Planned | RING-01, RING-02, RING-03, RING-04 |
+| 1 - Core Ring | ✓ Complete | RING-01, RING-02, RING-03, RING-04 |
 | 2 - Settings UI | Not Started | SETT-01, SETT-02 |
 
 **Coverage:** 6/6 requirements mapped
@@ -56,3 +56,4 @@ Plans:
 ---
 *Roadmap created: 2026-02-03*
 *Phase 1 planned: 2026-02-03*
+*Phase 1 complete: 2026-02-03*
