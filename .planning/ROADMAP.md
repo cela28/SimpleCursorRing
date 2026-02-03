@@ -36,6 +36,11 @@ Plans:
 
 **Requirements:** SETT-01, SETT-02
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Settings panel with controls + slash command + Interface Options registration (SETT-01, SETT-02)
+
 **Success Criteria:**
 1. Typing /simplecursorring opens settings panel
 2. Settings panel appears in Interface Options under AddOns section
@@ -49,7 +54,7 @@ Plans:
 | Phase | Status | Requirements |
 |-------|--------|--------------|
 | 1 - Core Ring | ✓ Complete | RING-01, RING-02, RING-03, RING-04 |
-| 2 - Settings UI | Not Started | SETT-01, SETT-02 |
+| 2 - Settings UI | Planned | SETT-01, SETT-02 |
 
 **Coverage:** 6/6 requirements mapped
 
@@ -57,3 +62,4 @@ Plans:
 *Roadmap created: 2026-02-03*
 *Phase 1 planned: 2026-02-03*
 *Phase 1 complete: 2026-02-03*
+*Phase 2 planned: 2026-02-03*
