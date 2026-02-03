@@ -6,3 +6,4 @@
 ## SavedVariables: SimpleCursorRingSaved
 
 Core.lua
+Settings.lua
