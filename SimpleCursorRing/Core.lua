@@ -10,9 +10,6 @@ local defaults = {
     useClassColor = false
 }
 
--- Throttled update configuration
-local UPDATE_INTERVAL = 0.01 -- 100 Hz max update rate for smooth tracking
-
 -- Create the main ring frame
 local ringFrame = CreateFrame("Frame", "SimpleCursorRingFrame", UIParent)
 ringFrame:SetSize(64, 64) -- Default size, customizable via settings
@@ -109,24 +106,12 @@ SimpleCursorRing.UpdateRingSize = UpdateRingSize
 SimpleCursorRing.UpdateRingColor = UpdateRingColor
 SimpleCursorRing.SetUseClassColor = SetUseClassColor
 
--- Throttled OnUpdate handler for cursor following
-local function OnUpdate(self, elapsed)
-    self.timeSinceLastUpdate = (self.timeSinceLastUpdate or 0) + elapsed
-
-    while self.timeSinceLastUpdate > UPDATE_INTERVAL do
-        -- Get cursor position (returns coordinates at UIParent scale)
-        local x, y = GetCursorPosition()
-
-        -- CRITICAL: Divide by effective scale for proper positioning at any UI scale
-        local scale = UIParent:GetEffectiveScale()
-
-        -- Position frame centered on cursor
-        -- Cursor coordinates use BOTTOMLEFT as origin (0,0)
-        self:ClearAllPoints()
-        self:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x / scale, y / scale)
-
-        self.timeSinceLastUpdate = self.timeSinceLastUpdate - UPDATE_INTERVAL
-    end
+-- OnUpdate handler for cursor following (updates every frame)
+local function OnUpdate(self)
+    local x, y = GetCursorPosition()
+    local scale = UIParent:GetEffectiveScale()
+    self:ClearAllPoints()
+    self:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x / scale, y / scale)
 end
 
 -- Initialize the OnUpdate handler
