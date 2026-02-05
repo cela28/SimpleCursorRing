@@ -48,17 +48,16 @@ local colorSwatch = CreateFrame("Button", nil, panel)
 colorSwatch:SetPoint("LEFT", colorLabel, "RIGHT", 8, 0)
 colorSwatch:SetSize(32, 32)
 
--- Swatch texture (shows current color)
-local swatchTexture = colorSwatch:CreateTexture(nil, "BACKGROUND")
-swatchTexture:SetAllPoints()
-swatchTexture:SetColorTexture(1, 1, 1, 1)
-
--- Swatch border
-local swatchBorder = colorSwatch:CreateTexture(nil, "BORDER")
-swatchBorder:SetAllPoints()
-swatchBorder:SetColorTexture(0.2, 0.2, 0.2, 1)
+-- Swatch border (behind the color)
+local swatchBorder = colorSwatch:CreateTexture(nil, "BACKGROUND")
 swatchBorder:SetPoint("TOPLEFT", -1, 1)
 swatchBorder:SetPoint("BOTTOMRIGHT", 1, -1)
+swatchBorder:SetColorTexture(0.3, 0.3, 0.3, 1)
+
+-- Swatch texture (shows current color - on top of border)
+local swatchTexture = colorSwatch:CreateTexture(nil, "ARTWORK")
+swatchTexture:SetAllPoints()
+swatchTexture:SetColorTexture(1, 1, 1, 1)
 
 -- Store reference for disable/enable
 panel.colorSwatch = colorSwatch
