@@ -12,16 +12,16 @@ A visible, customizable ring follows the cursor — helping players track their 
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Ring displays around cursor and follows mouse movement (v1.0)
+- [x] Ring size is adjustable via slider (20-200px) (v1.0)
+- [x] Ring color is customizable via color picker (v1.0)
+- [x] Option to use player's class color for ring (v1.0)
+- [x] Settings accessible via /simplecursorring slash command (v1.0)
+- [x] Settings accessible via Interface Options addon panel (v1.0)
 
 ### Active
 
-- [ ] Ring displays around cursor and follows mouse movement
-- [ ] Ring size is adjustable via slider (20-200px)
-- [ ] Ring color is customizable via color picker
-- [ ] Option to use player's class color for ring
-- [ ] Settings accessible via /simplecursorring slash command
-- [ ] Settings accessible via Interface Options addon panel
+(None — next milestone not yet scoped)
 
 ### Out of Scope
 
@@ -53,11 +53,17 @@ A visible, customizable ring follows the cursor — helping players track their 
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Ring only, no trail | User preference — keep it simple | — Pending |
-| No center dot | User explicitly excluded, not wanted in any version | — Pending |
-| Named "SimpleCursorRing" | Matches project folder, descriptive | — Pending |
-| English only for v1 | Reduce scope, can add locales later | — Pending |
-| v1 = basic ring + settings | Combat features deferred to v2 | — Pending |
+| Ring only, no trail | User preference — keep it simple | ✓ Good |
+| No center dot | User explicitly excluded, not wanted in any version | ✓ Good |
+| Named "SimpleCursorRing" | Matches project folder, descriptive | ✓ Good |
+| English only for v1 | Reduce scope, can add locales later | ✓ Good |
+| v1 = basic ring + settings | Combat features deferred to v2 | ✓ Good |
+
+## Milestones
+
+See: [MILESTONES.md](MILESTONES.md)
+
+- **v1.0** — Core Ring + Settings (completed 2026-02-06)
 
 ---
-*Last updated: 2026-02-03 after requirements scoping*
+*Last updated: 2026-02-06 after v1.0 milestone completion*
