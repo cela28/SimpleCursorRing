@@ -1,0 +1,9 @@
+## Interface: 120000
+## Title: SimpleCursorRing
+## Notes: Displays a customizable ring around the mouse cursor
+## Author:
+## Version: 1.0.0
+## SavedVariables: SimpleCursorRingSaved
+
+Core.lua
+Settings.lua

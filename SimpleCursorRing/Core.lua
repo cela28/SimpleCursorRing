@@ -1,0 +1,143 @@
+-- SimpleCursorRing: Displays a customizable ring around the mouse cursor
+-- Core.lua - Main addon logic: frame creation, cursor tracking, and settings
+
+local addonName = "SimpleCursorRing"
+
+-- Default settings (applied if SavedVariables missing)
+local defaults = {
+    size = 64,
+    color = {r = 1, g = 1, b = 1, a = 1},
+    useClassColor = false,
+    texture = "medium"
+}
+
+-- Texture options for ring styles
+local textureOptions = {
+    thin = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingThin",
+    medium = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingMedium",
+    thick = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingThick",
+}
+
+-- Create the main ring frame
+local ringFrame = CreateFrame("Frame", "SimpleCursorRingFrame", UIParent)
+ringFrame:SetSize(1, 1) -- Minimal frame size for reduced processing overhead
+ringFrame:SetFrameStrata("HIGH") -- Above most UI, below tooltips
+ringFrame:SetFrameLevel(100)
+ringFrame:EnableMouse(false)
+ringFrame:EnableKeyboard(false)
+
+-- Create the ring texture
+local ringTexture = ringFrame:CreateTexture(nil, "ARTWORK")
+ringTexture:SetTexture(textureOptions.medium)
+ringTexture:SetSize(64, 64)
+ringTexture:SetPoint("CENTER")
+ringTexture:SetVertexColor(1, 1, 1, 1) -- White, full opacity (default)
+
+-- Store texture reference for later customization
+ringFrame.texture = ringTexture
+
+-- Forward declarations for customization functions
+local UpdateRingSize, UpdateRingColor, SetUseClassColor, SetTexture
+
+-- Update ring size (RING-02)
+UpdateRingSize = function(size)
+    -- Clamp to valid range (20-200 pixels)
+    size = math.max(20, math.min(200, size))
+    SimpleCursorRingSaved.size = size
+    ringFrame.texture:SetSize(size, size)
+end
+
+-- Update ring color (RING-03, RING-04)
+UpdateRingColor = function(r, g, b, a)
+    if SimpleCursorRingSaved.useClassColor then
+        -- Get player's class color
+        local _, class = UnitClass("player")
+        local classColor = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[class] or RAID_CLASS_COLORS[class]
+        if classColor then
+            ringTexture:SetVertexColor(classColor.r, classColor.g, classColor.b, 1.0)
+        end
+    else
+        -- Use custom color (from parameters or saved settings)
+        r = r or SimpleCursorRingSaved.color.r
+        g = g or SimpleCursorRingSaved.color.g
+        b = b or SimpleCursorRingSaved.color.b
+        a = a or SimpleCursorRingSaved.color.a
+        SimpleCursorRingSaved.color = {r = r, g = g, b = b, a = a}
+        ringTexture:SetVertexColor(r, g, b, a)
+    end
+end
+
+-- Toggle class color mode (RING-04)
+SetUseClassColor = function(enabled)
+    SimpleCursorRingSaved.useClassColor = enabled
+    UpdateRingColor()
+end
+
+-- Update ring texture (QUICK-001)
+SetTexture = function(textureKey)
+    if textureOptions[textureKey] then
+        SimpleCursorRingSaved.texture = textureKey
+        ringTexture:SetTexture(textureOptions[textureKey])
+    end
+end
+
+-- Initialize SavedVariables with defaults
+local function InitializeSavedVariables()
+    if not SimpleCursorRingSaved then
+        SimpleCursorRingSaved = {}
+    end
+
+    -- Apply defaults for missing keys
+    for key, value in pairs(defaults) do
+        if SimpleCursorRingSaved[key] == nil then
+            if type(value) == "table" then
+                SimpleCursorRingSaved[key] = {}
+                for k, v in pairs(value) do
+                    SimpleCursorRingSaved[key][k] = v
+                end
+            else
+                SimpleCursorRingSaved[key] = value
+            end
+        end
+    end
+end
+
+-- Apply saved settings to ring
+local function ApplySavedSettings()
+    UpdateRingSize(SimpleCursorRingSaved.size)
+    UpdateRingColor()
+    SetTexture(SimpleCursorRingSaved.texture)
+end
+
+-- Event frame for ADDON_LOADED handling
+local eventFrame = CreateFrame("Frame")
+eventFrame:RegisterEvent("ADDON_LOADED")
+eventFrame:SetScript("OnEvent", function(self, event, loadedAddon)
+    if event == "ADDON_LOADED" and loadedAddon == addonName then
+        self:UnregisterEvent("ADDON_LOADED")
+        InitializeSavedVariables()
+        ApplySavedSettings()
+    end
+end)
+
+-- Expose functions globally for Settings UI (Phase 2)
+SimpleCursorRing = SimpleCursorRing or {}
+SimpleCursorRing.UpdateRingSize = UpdateRingSize
+SimpleCursorRing.UpdateRingColor = UpdateRingColor
+SimpleCursorRing.SetUseClassColor = SetUseClassColor
+SimpleCursorRing.SetTexture = SetTexture
+SimpleCursorRing.textureOptions = textureOptions  -- for dropdown labels
+
+-- OnUpdate handler for cursor following (updates every frame)
+local function OnUpdate(self)
+    local x, y = GetCursorPosition()
+    local scale = UIParent:GetEffectiveScale()
+    self:ClearAllPoints()
+    self:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x / scale, y / scale)
+end
+
+-- Initialize the OnUpdate handler
+ringFrame:SetScript("OnUpdate", OnUpdate)
+
+-- Show the ring
+ringFrame:Show()
