@@ -20,14 +20,17 @@ local textureOptions = {
 
 -- Create the main ring frame
 local ringFrame = CreateFrame("Frame", "SimpleCursorRingFrame", UIParent)
-ringFrame:SetSize(64, 64) -- Default size, customizable via settings
+ringFrame:SetSize(1, 1) -- Minimal frame size for reduced processing overhead
 ringFrame:SetFrameStrata("HIGH") -- Above most UI, below tooltips
 ringFrame:SetFrameLevel(100)
+ringFrame:EnableMouse(false)
+ringFrame:EnableKeyboard(false)
 
 -- Create the ring texture
 local ringTexture = ringFrame:CreateTexture(nil, "ARTWORK")
 ringTexture:SetTexture(textureOptions.medium)
-ringTexture:SetAllPoints(ringFrame)
+ringTexture:SetSize(64, 64)
+ringTexture:SetPoint("CENTER")
 ringTexture:SetVertexColor(1, 1, 1, 1) -- White, full opacity (default)
 
 -- Store texture reference for later customization
@@ -41,7 +44,7 @@ UpdateRingSize = function(size)
     -- Clamp to valid range (20-200 pixels)
     size = math.max(20, math.min(200, size))
     SimpleCursorRingSaved.size = size
-    ringFrame:SetSize(size, size)
+    ringFrame.texture:SetSize(size, size)
 end
 
 -- Update ring color (RING-03, RING-04)
