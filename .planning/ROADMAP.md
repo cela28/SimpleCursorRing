@@ -39,7 +39,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md — Settings panel with controls + slash command + Interface Options registration (SETT-01, SETT-02)
+- [x] 02-01-PLAN.md — Settings panel with controls + slash command + Interface Options registration (SETT-01, SETT-02)
 
 **Success Criteria:**
 1. Typing /simplecursorring opens settings panel
@@ -60,7 +60,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 03-01-PLAN.md — Optimize frame to 1x1 with disabled input and independent texture sizing
+- [x] 03-01-PLAN.md — Optimize frame to 1x1 with disabled input and independent texture sizing
 
 **Success Criteria:**
 1. Ring frame uses 1x1 size with independent texture sizing
@@ -75,8 +75,8 @@ Plans:
 | Phase | Status | Requirements |
 |-------|--------|--------------|
 | 1 - Core Ring | ✓ Complete | RING-01, RING-02, RING-03, RING-04 |
-| 2 - Settings UI | Planned | SETT-01, SETT-02 |
-| 3 - Optimize Cursor Ring Frame | Planned | — |
+| 2 - Settings UI | ✓ Complete | SETT-01, SETT-02 |
+| 3 - Optimize Cursor Ring Frame | ✓ Complete | — |
 
 **Coverage:** 6/6 requirements mapped
 
@@ -87,3 +87,5 @@ Plans:
 *Phase 2 planned: 2026-02-03*
 *Phase 3 added: 2026-02-06*
 *Phase 3 planned: 2026-02-06*
+*Phase 2 complete: 2026-02-06*
+*Phase 3 complete: 2026-02-06*
