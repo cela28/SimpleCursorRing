@@ -158,7 +158,6 @@ local function TextureDropdown_Initialize(self, level)
         UIDropDownMenu_AddButton(info, level)
     end
 end
-UIDropDownMenu_Initialize(textureDropdown, TextureDropdown_Initialize)
 
 -- Store reference
 panel.textureDropdown = textureDropdown
@@ -184,7 +183,8 @@ local function InitializeControls()
         colorSwatch:SetAlpha(1.0)
     end
 
-    -- Texture dropdown
+    -- Texture dropdown - initialize and set text
+    UIDropDownMenu_Initialize(textureDropdown, TextureDropdown_Initialize)
     UIDropDownMenu_SetText(textureDropdown, textureLabels[SimpleCursorRingSaved.texture] or "Medium")
 end
 
