@@ -49,12 +49,34 @@ Plans:
 
 ---
 
+### Phase 3: Optimize Cursor Ring Frame
+
+**Goal:** Optimize the cursor ring frame setup to match AzortharionUI's approach — 1x1 frame, disabled input, independent texture sizing — for reduced per-frame overhead.
+
+**Dependencies:** Phase 1 (ring frame must exist)
+
+**Requirements:** None (performance optimization)
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 03-01-PLAN.md — Optimize frame to 1x1 with disabled input and independent texture sizing
+
+**Success Criteria:**
+1. Ring frame uses 1x1 size with independent texture sizing
+2. Mouse and keyboard input disabled on ring frame
+3. Ring still follows cursor smoothly with all existing features working
+4. No visual or functional regression
+
+---
+
 ## Progress
 
 | Phase | Status | Requirements |
 |-------|--------|--------------|
 | 1 - Core Ring | ✓ Complete | RING-01, RING-02, RING-03, RING-04 |
 | 2 - Settings UI | Planned | SETT-01, SETT-02 |
+| 3 - Optimize Cursor Ring Frame | Planned | — |
 
 **Coverage:** 6/6 requirements mapped
 
@@ -63,3 +85,5 @@ Plans:
 *Phase 1 planned: 2026-02-03*
 *Phase 1 complete: 2026-02-03*
 *Phase 2 planned: 2026-02-03*
+*Phase 3 added: 2026-02-06*
+*Phase 3 planned: 2026-02-06*
