@@ -140,9 +140,9 @@ local textureLabels = {
     thin = "Thin",
     medium = "Medium",
     thick = "Thick (Bold)",
-	ring = "ring"
+	default = "Default"
 }
-local textureOrder = {"thin", "medium", "thick", "ring"}
+local textureOrder = {"thin", "medium", "thick", "default"}
 
 -- Dropdown initialization function
 local function TextureDropdown_Initialize(self, level)

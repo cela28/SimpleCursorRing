@@ -16,8 +16,7 @@ local textureOptions = {
     thin = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingThin",
     medium = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingMedium",
     thick = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingThick",
-    cursor_ring = "Interface\\AddOns\\SimpleCursorRing\\Textures\\cursor_ring",
-    ring = "Interface\\AddOns\\SimpleCursorRing\\Textures\\Ring"
+    default = "Interface\\AddOns\\SimpleCursorRing\\Textures\\Ring"
 }
 
 -- Create the main ring frame
