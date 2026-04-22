@@ -7,16 +7,7 @@ local addonName = "SimpleCursorRing"
 local defaults = {
     size = 64,
     color = {r = 1, g = 1, b = 1, a = 1},
-    useClassColor = false,
-    texture = "medium"
-}
-
--- Texture options for ring styles
-local textureOptions = {
-    thin = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingThin",
-    medium = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingMedium",
-    thick = "Interface\\AddOns\\SimpleCursorRing\\Textures\\RingThick",
-    default = "Interface\\AddOns\\SimpleCursorRing\\Textures\\Ring"
+    useClassColor = false
 }
 
 -- Create the main ring frame
@@ -29,7 +20,7 @@ ringFrame:EnableKeyboard(false)
 
 -- Create the ring texture
 local ringTexture = ringFrame:CreateTexture(nil, "ARTWORK")
-ringTexture:SetTexture(textureOptions.medium)
+ringTexture:SetTexture("Interface\\AddOns\\SimpleCursorRing\\Textures\\Default")
 ringTexture:SetSize(64, 64)
 ringTexture:SetPoint("CENTER")
 ringTexture:SetVertexColor(1, 1, 1, 1) -- White, full opacity (default)
@@ -38,7 +29,7 @@ ringTexture:SetVertexColor(1, 1, 1, 1) -- White, full opacity (default)
 ringFrame.texture = ringTexture
 
 -- Forward declarations for customization functions
-local UpdateRingSize, UpdateRingColor, SetUseClassColor, SetTexture
+local UpdateRingSize, UpdateRingColor, SetUseClassColor
 
 -- Update ring size (RING-02)
 UpdateRingSize = function(size)
@@ -74,14 +65,6 @@ SetUseClassColor = function(enabled)
     UpdateRingColor()
 end
 
--- Update ring texture (QUICK-001)
-SetTexture = function(textureKey)
-    if textureOptions[textureKey] then
-        SimpleCursorRingSaved.texture = textureKey
-        ringTexture:SetTexture(textureOptions[textureKey])
-    end
-end
-
 -- Initialize SavedVariables with defaults
 local function InitializeSavedVariables()
     if not SimpleCursorRingSaved then
@@ -107,7 +90,6 @@ end
 local function ApplySavedSettings()
     UpdateRingSize(SimpleCursorRingSaved.size)
     UpdateRingColor()
-    SetTexture(SimpleCursorRingSaved.texture)
 end
 
 -- Event frame for ADDON_LOADED handling
@@ -126,8 +108,6 @@ SimpleCursorRing = SimpleCursorRing or {}
 SimpleCursorRing.UpdateRingSize = UpdateRingSize
 SimpleCursorRing.UpdateRingColor = UpdateRingColor
 SimpleCursorRing.SetUseClassColor = SetUseClassColor
-SimpleCursorRing.SetTexture = SetTexture
-SimpleCursorRing.textureOptions = textureOptions  -- for dropdown labels
 
 -- OnUpdate handler for cursor following (updates every frame)
 local function OnUpdate(self)

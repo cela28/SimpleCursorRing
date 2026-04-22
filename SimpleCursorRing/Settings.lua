@@ -126,43 +126,6 @@ end)
 -- Store reference for initialization
 panel.classColorCheckbox = classColorCheckbox
 
--- Ring Style Dropdown (Texture Selection)
-local textureLabel = panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-textureLabel:SetPoint("TOPLEFT", classColorCheckbox, "BOTTOMLEFT", 0, -16)
-textureLabel:SetText("Ring Style")
-
-local textureDropdown = CreateFrame("Frame", "SimpleCursorRingTextureDropdown", panel, "UIDropDownMenuTemplate")
-textureDropdown:SetPoint("LEFT", textureLabel, "RIGHT", -8, -2)
-UIDropDownMenu_SetWidth(textureDropdown, 120)
-
--- Texture display labels
-local textureLabels = {
-    thin = "Thin",
-    medium = "Medium",
-    thick = "Thick (Bold)",
-	default = "Default"
-}
-local textureOrder = {"thin", "medium", "thick", "default"}
-
--- Dropdown initialization function
-local function TextureDropdown_Initialize(self, level)
-    for _, key in ipairs(textureOrder) do
-        local info = UIDropDownMenu_CreateInfo()
-        info.text = textureLabels[key]
-        info.value = key
-        info.func = function(self)
-            SimpleCursorRing.SetTexture(self.value)
-            UIDropDownMenu_SetText(textureDropdown, textureLabels[self.value])
-            CloseDropDownMenus()
-        end
-        info.checked = (SimpleCursorRingSaved.texture == key)
-        UIDropDownMenu_AddButton(info, level)
-    end
-end
-
--- Store reference
-panel.textureDropdown = textureDropdown
-
 -- Initialize controls from saved settings (called after PLAYER_LOGIN)
 local function InitializeControls()
     -- Size slider
@@ -183,10 +146,6 @@ local function InitializeControls()
         colorSwatch:SetEnabled(true)
         colorSwatch:SetAlpha(1.0)
     end
-
-    -- Texture dropdown - initialize and set text
-    UIDropDownMenu_Initialize(textureDropdown, TextureDropdown_Initialize)
-    UIDropDownMenu_SetText(textureDropdown, textureLabels[SimpleCursorRingSaved.texture] or "Medium")
 end
 
 -- Panel registration and slash command setup (Task 2)
